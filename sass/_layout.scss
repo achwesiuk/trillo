@@ -1,17 +1,26 @@
 .container {
     max-width: 120rem;
-    margin: 8rem auto;
+    margin: 8rem auto; //kontener jest wyśrodkowany wewnątrz elementu macierzystego
     background-color: var(--color-grey-light-2);
     -webkit-box-shadow: var(--shadow-dark);
             box-shadow: var(--shadow-dark);
 
     min-height: 50rem;
+
+    @media only screen and (max-width:$bp-largest) {
+        margin: 0; //element wypełnia cały widok, więc nie potrzebuje już marginesów
+        max-width: 100%;
+    }
 }
 
 .content { //flex container
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+
+    @media only screen and (max-width:$bp-medium) {
+        flex-direction: column;
+    }
 }
 
 .header {
@@ -29,6 +38,12 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+
+    @media only screen and (max-width:$bp-smallest) {
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 11rem;
+    }
 }
 
 .sidebar { //flex item
@@ -63,6 +78,14 @@
     display: flex;
     padding: 4.5rem;
     background-color: var(--color-grey-light-1);
+
+    @media only screen and (max-width:$bp-medium) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width:$bp-small) {
+        flex-direction: column;
+    }
 }
 
 .description {
@@ -72,6 +95,16 @@
     flex: 0 0 60%;//można podać wartość w procentach, gdy dwie pierwsze wartośći wynoszą 0
     margin-right: 4.5rem;
     border-bottom: var(--line);
+
+    @media only screen and (max-width:$bp-medium) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width:$bp-small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
 }
 
 .user-reviews {
