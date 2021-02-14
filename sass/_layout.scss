@@ -19,7 +19,10 @@
     display: flex;
 
     @media only screen and (max-width:$bp-medium) {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
 }
 
@@ -40,8 +43,10 @@
             align-items: center;
 
     @media only screen and (max-width:$bp-smallest) {
-        flex-wrap: wrap;
-        align-content: space-around;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        -ms-flex-line-pack: distribute;
+            align-content: space-around;
         height: 11rem;
     }
 }
@@ -75,6 +80,8 @@
 
 .detail {
     font-size: 1.4rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding: 4.5rem;
     background-color: var(--color-grey-light-1);
@@ -84,15 +91,21 @@
     }
 
     @media only screen and (max-width:$bp-small) {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
 }
 
 .description {
     background-color:#fff;
-    box-shadow: var(--shadow-light);
+    -webkit-box-shadow: var(--shadow-light);
+            box-shadow: var(--shadow-light);
     padding: 3rem;
-    flex: 0 0 60%;//można podać wartość w procentach, gdy dwie pierwsze wartośći wynoszą 0
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 60%;
+            flex: 0 0 60%;//można podać wartość w procentach, gdy dwie pierwsze wartośći wynoszą 0
     margin-right: 4.5rem;
     border-bottom: var(--line);
 
@@ -108,11 +121,20 @@
 }
 
 .user-reviews {
-    flex: 1; //element zajmuje pozostałą szerokość (40%)
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1; //element zajmuje pozostałą szerokość (40%)
     
     //text-align: center; //btn jest wyśrodkowany, ale recenzje również - trzeba znaleść inny sposób (poniżej)
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column; //bez tej właściwości recenzje będą znajdować się obok siebie
-    align-items: center; //defaultowo align-items było ustawione na stretch - linia pod przyciskiem rozciągała się na całej szerokości
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; //bez tej właściwości recenzje będą znajdować się obok siebie
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; //defaultowo align-items było ustawione na stretch - linia pod przyciskiem rozciągała się na całej szerokości
 
 }
